@@ -6726,8 +6726,8 @@
     },
     {
       "path": "data/catalog.json.gz",
-      "sha256": "e37cd32e500149653a194fc683c05957b3f9e7dc489381e8f5b5512a81e105fa",
-      "bytes": 953845
+      "sha256": "6736562cb23e7a69b1a5cefed8299d77deb4764c54ef257134a4cd7bd43693b1",
+      "bytes": 953837
     },
     {
       "path": "data/flows.json.gz",

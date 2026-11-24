@@ -11,9 +11,9 @@ from functools import lru_cache
 
 ROOT=Path(__file__).resolve().parents[2]
 ALIASES={
- 'Dm_Kokiri_0060':'Saria intro conversation — meeting Navi',
- 'Dm_Kokiri_0050':'Saria first appearance — voiced cutscene',
- 'Dm_Kokiri_0150':'Saria farewell — bridge cutscene',
+ 'Dm_Kokiri_0060':'Saria intro conversation: meeting Navi',
+ 'Dm_Kokiri_0050':'Saria first appearance: voiced cutscene',
+ 'Dm_Kokiri_0150':'Saria farewell: bridge cutscene',
  'Dm_MelodyGet_Saria':"Learning Saria’s Song",
 }
 

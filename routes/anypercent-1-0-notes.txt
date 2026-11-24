@@ -10,7 +10,7 @@ These counts describe this mapping, not completeness against every textbox in a 
 
 Rebuild: .\.venv\Scripts\python.exe -B tools/route_text/build_sheet_route.py
 
-Row 1: Saria intro conversation — 12 messages; selected path mapped
+Row 1: Saria intro conversation: 12 messages; selected path mapped
   Dm_Kokiri_0060::EntryPoint0
   Interactive conversation before the first sheet step; voiced intro timelines omitted. Exclude this group if your timing starts after the conversation.
   EventFlowMsg/Dm_Kokiri_0060:Dm_Kokiri_0060_0000
@@ -25,53 +25,53 @@ Row 1: Saria intro conversation — 12 messages; selected path mapped
   EventFlowMsg/Dm_Kokiri_0060:Dm_Kokiri_0060_0008
   EventFlowMsg/Dm_Kokiri_0060:Dm_Kokiri_0060_0009
   EventFlowMsg/Dm_Kokiri_0060:Dm_Kokiri_0060_0010
-Row 2: Mido blue-rupee chests — 0 messages; REVIEW: Path remains incomplete; see mapping report.
+Row 2: Mido blue-rupee chests: 0 messages; REVIEW: Path remains incomplete; see mapping report.
   Dm_SY_TreasureboxSmall::Success_MidoHouse
   Three blue-rupee chests in KokiriForest_Child_Static; named GetEventName=KokiriForest_TreasureBox_NaviChatOff. Matches sheet 15 rupees. Front-facing camera branch 0 representative; both raycast cases compared separately.
   Unresolved: EventQueryPouchContentGetType {"GameDataName": "", "ActorName": "TBox_Rupee_Blue"}
   Unresolved: CheckHitCamera {"ActorName": "TBox_Rupee_Blue"}
-Row 5: Kokiri shop greeting — 1 messages; selected path mapped
+Row 5: Kokiri shop greeting: 1 messages; selected path mapped
   Npc_Kokiri_001_Shop_Child::Talk
   First visit before Deku Tree introduction; stop at shopping UI. Purchase episodes follow separately.
   EventFlowMsg/Npc_Kokiri_001_Shop_Child:Talk_0004
-Row 5: Buy five Deku nuts — 4 messages; selected path mapped
+Row 5: Buy five Deku nuts: 4 messages; selected path mapped
   DisplayShop::NormalFlow
   One successful purchase; stop when the item-selection screen reopens.
   EventFlowMsg/Npc_Kokiri_001_Shop_Child:Shop_01
   ActorMsg/PouchContent:Shop_DekuNutBundle_01_GetMessage
   ActorMsg/PouchContent:Shop_DekuNutBundle_01_GetCaption
   EventFlowMsg/Npc_Kokiri_001_Shop_Child:Shop_07
-Row 5: Buy one Deku stick — 2 messages; selected path mapped
+Row 5: Buy one Deku stick: 2 messages; selected path mapped
   DisplayShop::NormalFlow
   One successful purchase; stop when the item-selection screen reopens.
   EventFlowMsg/Npc_Kokiri_001_Shop_Child:Shop_01
   EventFlowMsg/Npc_Kokiri_001_Shop_Child:Shop_07_2
-Row 5: Leave Kokiri shop — 2 messages; selected path mapped
+Row 5: Leave Kokiri shop: 2 messages; selected path mapped
   Npc_Kokiri_001_Shop_Child::ReTurnTalk
   Exit after buying nuts and stick. Random re-choice and farewell represented by case 0.
   EventFlowMsg/Npc_Kokiri_001_Shop_Child:ReChoiceTalk_01
   EventFlowMsg/Npc_Kokiri_001_Shop_Child:Talk_0007
-Row 7: Kokiri Sword — 2 messages; selected path mapped
+Row 7: Kokiri Sword: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   Sword chest GetSword transitions to Dm_SY_Treasurebox (item-get), then Dm_Kokiri_0063 (no MessageId displays). No Mido talk flag or shield.
   ActorMsg/PouchContent:Weapon_Sword_Kokiri_GetMessage
   ActorMsg/PouchContent:Weapon_Sword_Kokiri_GetCaption
-Row 9: Fairy Ocarina — 2 messages; selected path mapped
+Row 9: Fairy Ocarina: 2 messages; selected path mapped
   Dm_Kokiri_0155::EntryPoint0
   ActorMsg/PouchContent:Item_Ocarina_Fairy_GetMessage
   ActorMsg/PouchContent:Item_Ocarina_Fairy_GetCaption
-Row 10: Hyrule Field owl dialogue — 5 messages; selected path mapped
+Row 10: Hyrule Field owl dialogue: 5 messages; selected path mapped
   Dm_HrlField_0010::EntryPoint0
   EventFlowMsg/Dm_HrlField_0010:Dm_HrlField_0010_Text_005_b
   EventFlowMsg/Dm_HrlField_0010:Dm_HrlField_0010_Text_006_b
   EventFlowMsg/Dm_HrlField_0010:Dm_HrlField_0010_Text_007_b
   EventFlowMsg/Dm_HrlField_0010:Dm_HrlField_0010_Text_015_b
   EventFlowMsg/Dm_HrlField_0010:Dm_HrlField_0010_Text_017_b
-Row 11: Wake Talon — 2 messages; selected path mapped
+Row 11: Wake Talon: 2 messages; selected path mapped
   Npc_Hylia_Talon_Child::Talk
   EventFlowMsg/Npc_Hylia_Talon_Child:Talk_22
   EventFlowMsg/Npc_Hylia_Talon_Child:Talk_60
-Row 12: Zelda introduction — 14 messages; selected path mapped
+Row 12: Zelda introduction: 14 messages; selected path mapped
   Dm_HrlCastle_0035::EntryPoint0
   EventFlowMsg/Dm_HrlCastle_0035:Dm_HrlCastle_0035_0000
   EventFlowMsg/Dm_HrlCastle_0035:Dm_HrlCastle_0035_0001
@@ -87,7 +87,7 @@ Row 12: Zelda introduction — 14 messages; selected path mapped
   EventFlowMsg/Dm_HrlCastle_0035:Dm_HrlCastle_0035_0011
   EventFlowMsg/Dm_HrlCastle_0035:Dm_HrlCastle_0035_0012
   EventFlowMsg/Dm_HrlCastle_0035:Dm_HrlCastle_0035_0013
-Row 12: Zelda conversation and letter — 41 messages; selected path mapped
+Row 12: Zelda conversation and letter: 41 messages; selected path mapped
   Dm_HrlCastle_0050::EntryPoint0
   EventFlowMsg/Dm_HrlCastle_0050:Dm_HrlCastle_0050_0001
   EventFlowMsg/Dm_HrlCastle_0050:Dm_HrlCastle_0050_0002
@@ -130,7 +130,7 @@ Row 12: Zelda conversation and letter — 41 messages; selected path mapped
   EventFlowMsg/Dm_HrlCastle_0050:Dm_HrlCastle_0050_0044
   ActorMsg/PouchContent:Item_ZeldaLetter_GetMessage
   ActorMsg/PouchContent:Item_ZeldaLetter_GetCaption
-Row 12: Zelda's Lullaby — 17 messages; selected path mapped
+Row 12: Zelda's Lullaby: 17 messages; selected path mapped
   Dm_MelodyGet_Zelda::EntryPoint0
   EventFlowMsg/Dm_MelodyGet_Zelda:Dm_MelodyGet_Zelda_0000
   EventFlowMsg/Dm_MelodyGet_Zelda:Dm_MelodyGet_Zelda_0001
@@ -149,7 +149,7 @@ Row 12: Zelda's Lullaby — 17 messages; selected path mapped
   ActorMsg/PouchContent:Item_Melody_ZeldaLullaby_GetCaption
   EventFlowMsg/Dm_MelodyGet_Zelda:Dm_MelodyGet_Zelda_0016
   EventFlowMsg/Dm_MelodyGet_Zelda:Dm_MelodyGet_Zelda_0017
-Row 12: Impa send-off — 13 messages; selected path mapped
+Row 12: Impa send-off: 13 messages; selected path mapped
   Dm_HrlField_0020::EntryPoint0
   EventFlowMsg/Dm_HrlField_0020:Dm_HrlField_0020_0000
   EventFlowMsg/Dm_HrlField_0020:Dm_HrlField_0020_0001
@@ -164,7 +164,7 @@ Row 12: Impa send-off — 13 messages; selected path mapped
   EventFlowMsg/Dm_HrlField_0020:Dm_HrlField_0020_0011
   EventFlowMsg/Dm_HrlField_0020:Dm_HrlField_0020_0012
   EventFlowMsg/Dm_HrlField_0020:Dm_HrlField_0020_0013
-Row 13: Chest-game start (CMS) — 10 messages; selected path mapped
+Row 13: Chest-game start (CMS): 10 messages; selected path mapped
   MiniGame_SequentialChoiceTreasure::Ready_Npc_Hylia_022_Shop_Child_Talk
   EventFlowMsg/Npc_Hylia_022_Shop_Child:Talk_01
   EventFlowMsg/Npc_Hylia_022_Shop_Child:Talk_07
@@ -176,7 +176,7 @@ Row 13: Chest-game start (CMS) — 10 messages; selected path mapped
   ActorMsg/PouchContent:Obj_MiniGame_SmallKey_GetMessage
   ActorMsg/PouchContent:Obj_MiniGame_SmallKey_GetCaption
   EventFlowMsg/Npc_Hylia_022_Shop_Child:Talk_15
-Row 14: Potion-shop bottle quest (PSS) — 8 messages; selected path mapped
+Row 14: Potion-shop bottle quest (PSS): 8 messages; selected path mapped
   Npc_Hylia_020_Shop_Child::Item_Bottle_TutorialEvent_Talk
   EventFlowMsg/Npc_Hylia_020_Shop_Child:Talk_101
   EventFlowMsg/Npc_Hylia_020_Shop_Child:Talk_110
@@ -186,12 +186,12 @@ Row 14: Potion-shop bottle quest (PSS) — 8 messages; selected path mapped
   ActorMsg/PouchContent:Item_Bottle_GetCaption
   EventFlowMsg/Npc_Hylia_020_Shop_Child:Talk_103
   EventFlowMsg/Npc_Hylia_020_Shop_Child:Talk_119
-Row 18: Purple rupee chest — 0 messages; REVIEW: Path remains incomplete; see mapping report.
+Row 18: Purple rupee chest: 0 messages; REVIEW: Path remains incomplete; see mapping report.
   Dm_SY_TreasureboxSmall::Success
   Chest reward named in sheet; item text substituted into GetPouchContent templates.
   Unresolved: EventQueryPouchContentGetType {"GameDataName": "", "ActorName": "TBox_Rupee_Purple"}
   Unresolved: CheckHitCamera {"ActorName": "TBox_Rupee_Purple"}
-Row 22: Saria's Song — 19 messages; selected path mapped
+Row 22: Saria's Song: 19 messages; selected path mapped
   Dm_MelodyGet_Saria::EntryPoint0
   EventFlowMsg/Dm_MelodyGet_Saria:Dm_MelodyGet_Saria_0000
   EventFlowMsg/Dm_MelodyGet_Saria:Dm_MelodyGet_Saria_0013
@@ -212,7 +212,7 @@ Row 22: Saria's Song — 19 messages; selected path mapped
   EventFlowMsg/Dm_MelodyGet_Saria:Dm_MelodyGet_Saria_0012
   ActorMsg/PouchContent:Item_Melody_SariaSong_GetMessage
   ActorMsg/PouchContent:Item_Melody_SariaSong_GetCaption
-Row 23: Darunia bracelet dialogue — 20 messages; selected path mapped
+Row 23: Darunia bracelet dialogue: 20 messages; selected path mapped
   Dm_Goron_0030::EntryPoint0
   EventFlowMsg/Dm_Goron_0030:Dm_Goron_0030_0010
   EventFlowMsg/Dm_Goron_0030:Dm_Goron_0030_0011
@@ -234,29 +234,29 @@ Row 23: Darunia bracelet dialogue — 20 messages; selected path mapped
   EventFlowMsg/Dm_Goron_0030:Dm_Goron_0030_0021
   ActorMsg/PouchContent:Armor_Child_Gauntlet_Goron_GetMessage
   ActorMsg/PouchContent:Armor_Child_Gauntlet_Goron_GetCaption
-Row 24: Goron shop greeting — 2 messages; selected path mapped
+Row 24: Goron shop greeting: 2 messages; selected path mapped
   Npc_Goron_011_Shop_Child::Talk
   First visit with bracelet, no Fire Stone; Talk_08 assumes ordinary shopkeeper emotion. Talk_00 is an emotion-dependent alternative.
   EventFlowMsg/Npc_Goron_011_Shop_Child:Talk_08
   EventFlowMsg/Npc_Goron_011_Shop_Child:Talk_01
-Row 24: Buy bug (Goron shop) — 4 messages; selected path mapped
+Row 24: Buy bug (Goron shop): 4 messages; selected path mapped
   DisplayShop::NormalFlow
   One successful purchase; stop when the item-selection screen reopens.
   EventFlowMsg/Npc_Goron_011_Shop_Child:Shop_01
   ActorMsg/PouchContent:Animal_Insect_GetMessage
   ActorMsg/PouchContent:Animal_Insect_GetCaption
   EventFlowMsg/Npc_Goron_011_Shop_Child:Shop_07
-Row 24: Leave Goron shop — 2 messages; selected path mapped
+Row 24: Leave Goron shop: 2 messages; selected path mapped
   Npc_Goron_011_Shop_Child::ReChoice
   Exit after successful bug purchase. Random farewell represented by case 0.
   EventFlowMsg/Npc_Goron_011_Shop_Child:ReChoiceTalk_01
   EventFlowMsg/Npc_Goron_011_Shop_Child:Talk_06
-Row 25: Bomb Bag — 2 messages; selected path mapped
+Row 25: Bomb Bag: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   Chest reward named in sheet; item text substituted into GetPouchContent templates.
   ActorMsg/PouchContent:Item_BombBag_Small_GetMessage
   ActorMsg/PouchContent:Item_BombBag_Small_GetCaption
-Row 27: Great Fairy magic and Din's Fire — 13 messages; selected path mapped
+Row 27: Great Fairy magic and Din's Fire: 13 messages; selected path mapped
   Dm_FairyFountain_Din::EntryPoint0
   Farewell randomly chooses _0403_01, _0403_02 or _0403_03. Each is one box in all 16 locales; case 0 is a count-equivalent representative, not a predicted RNG result.
   EventFlowMsg/Dm_FairyFountain_Din:Dm_FairyFountain_0001
@@ -272,21 +272,21 @@ Row 27: Great Fairy magic and Din's Fire — 13 messages; selected path mapped
   EventFlowMsg/Dm_FairyFountain_Din:Dm_FairyFountain_Din_0007
   EventFlowMsg/Dm_FairyFountain_Din:Dm_FairyFountain_Din_0008
   EventFlowMsg/Dm_FairyFountain_Din:Dm_FairyFountain_0403_01
-Row 27: Death Mountain owl ride — 2 messages; selected path mapped
+Row 27: Death Mountain owl ride: 2 messages; selected path mapped
   Npc_Kaepora_DeathMountainTrail::Talk
   EventFlowMsg/Npc_Kaepora_DeathMountainTrail:Talk_01
   EventFlowMsg/Npc_Kaepora_DeathMountainTrail:Talk_05
-Row 30: Hover Boots — 2 messages; selected path mapped
+Row 30: Hover Boots: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   Chest reward named in sheet; item text substituted into GetPouchContent templates.
   ActorMsg/PouchContent:Armor_Adult_HoverBoot_GetMessage
   ActorMsg/PouchContent:Armor_Adult_HoverBoot_GetCaption
-Row 32: Shadow Medallion — 3 messages; selected path mapped
+Row 32: Shadow Medallion: 3 messages; selected path mapped
   Dm_Awake_Shadow_Get::EntryPoint0
   ActorMsg/PouchContent:Item_Medal_Shadow_GetMessage
   ActorMsg/PouchContent:Item_Medal_Shadow_GetCaption
   EventFlowMsg/Dm_Awake_Shadow_Get:Dm_Awake_Shadow_Get_Text_000_b
-Row 33: Dampe race start — 7 messages; selected path mapped
+Row 33: Dampe race start: 7 messages; selected path mapped
   MiniGame_DampeRace::Ready_Npc_Hylia_Dampe_002_Talk
   User confirmed completing the first race normally.
   EventFlowMsg/Npc_Hylia_Dampe_002:Talk_00
@@ -296,7 +296,7 @@ Row 33: Dampe race start — 7 messages; selected path mapped
   EventFlowMsg/Npc_Hylia_Dampe_002:Talk_01
   EventFlowMsg/Npc_Hylia_Dampe_002:Talk_52
   EventFlowMsg/Npc_Hylia_Dampe_002:Talk_61
-Row 33: Dampe race finish — 6 messages; selected path mapped
+Row 33: Dampe race finish: 6 messages; selected path mapped
   MiniGame_DampeRace::Finish_Npc_Hylia_Dampe_002_StepStart
   User confirmed completing the first race normally.
   EventFlowMsg/Npc_Hylia_Dampe_002:Talk_51
@@ -305,12 +305,12 @@ Row 33: Dampe race finish — 6 messages; selected path mapped
   EventFlowMsg/Npc_Hylia_Dampe_002:Talk_15
   EventFlowMsg/Npc_Hylia_Dampe_002:Talk_16
   EventFlowMsg/Npc_Hylia_Dampe_002:Talk_55
-Row 33: Hookshot chest — 2 messages; selected path mapped
+Row 33: Hookshot chest: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   Chest reward named in sheet; item text substituted into GetPouchContent templates.
   ActorMsg/PouchContent:Item_Hookshot_GetMessage
   ActorMsg/PouchContent:Item_Hookshot_GetCaption
-Row 34: Goron Tunic — 18 messages; selected path mapped
+Row 34: Goron Tunic: 18 messages; selected path mapped
   SageOfFire::Step02_DaruniaJr_FirstTalk
   EventFlowMsg/SageOfFire:Talk_0013
   EventFlowMsg/SageOfFire:Talk_0003
@@ -330,7 +330,7 @@ Row 34: Goron Tunic — 18 messages; selected path mapped
   EventFlowMsg/SageOfFire:Talk_0008
   EventFlowMsg/SageOfFire:Talk_0006
   EventFlowMsg/SageOfFire:Talk_0009
-Row 35: Bolero of Fire — 8 messages; selected path mapped
+Row 35: Bolero of Fire: 8 messages; selected path mapped
   Dm_MelodyGet_Fire::EntryPoint0
   EventFlowMsg/Dm_MelodyGet_Fire:Dm_MelodyGet_Fire_0001
   EventFlowMsg/Dm_MelodyGet_Fire:Dm_MelodyGet_Fire_0003
@@ -340,17 +340,17 @@ Row 35: Bolero of Fire — 8 messages; selected path mapped
   EventFlowMsg/Dm_MelodyGet_Fire:Dm_MelodyGet_Fire_0005
   EventFlowMsg/Dm_MelodyGet_Fire:Dm_MelodyGet_Fire_0006
   EventFlowMsg/Dm_MelodyGet_Forest:Dm_MelodyGet_Forest_0023
-Row 42: Megaton Hammer — 2 messages; selected path mapped
+Row 42: Megaton Hammer: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   Chest reward named in sheet; item text substituted into GetPouchContent templates.
   ActorMsg/PouchContent:Item_Hammer_GetMessage
   ActorMsg/PouchContent:Item_Hammer_GetCaption
-Row 42: Bolero warp after Hammer — 2 messages; selected path mapped
+Row 42: Bolero warp after Hammer: 2 messages; selected path mapped
   Dm_SY_Ocarina::PlayOcarinaSequence
   Successful warp; choose Yes.
   EventFlowMsg/Dm_SY_Ocarina:Talk_00
   EventFlowMsg/Dm_SY_Ocarina:Talk_03
-Row 44: Minuet of Forest — 13 messages; selected path mapped
+Row 44: Minuet of Forest: 13 messages; selected path mapped
   Dm_MelodyGet_Forest::EntryPoint0
   EventFlowMsg/Dm_MelodyGet_Forest:Dm_MelodyGet_Forest_0003
   EventFlowMsg/Dm_MelodyGet_Forest:Dm_MelodyGet_Forest_0004
@@ -365,75 +365,75 @@ Row 44: Minuet of Forest — 13 messages; selected path mapped
   EventFlowMsg/Dm_MelodyGet_Forest:Dm_MelodyGet_Forest_0018
   EventFlowMsg/Dm_MelodyGet_Forest:Dm_MelodyGet_Forest_0019
   EventFlowMsg/Dm_MelodyGet_Forest:Dm_MelodyGet_Forest_0024
-Row 47: Fairy Bow — 2 messages; selected path mapped
+Row 47: Fairy Bow: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   Chest reward named in sheet; item text substituted into GetPouchContent templates.
   ActorMsg/PouchContent:Weapon_Range_Bow_GetMessage
   ActorMsg/PouchContent:Weapon_Range_Bow_GetCaption
-Row 47: Minuet warp after Bow — 2 messages; selected path mapped
+Row 47: Minuet warp after Bow: 2 messages; selected path mapped
   Dm_SY_Ocarina::PlayOcarinaSequence
   Successful warp; choose Yes.
   EventFlowMsg/Dm_SY_Ocarina:Talk_00
   EventFlowMsg/Dm_SY_Ocarina:Talk_02
-Row 52: Mirror Shield — 2 messages; selected path mapped
+Row 52: Mirror Shield: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   Chest reward named in sheet; item text substituted into GetPouchContent templates.
   ActorMsg/PouchContent:Weapon_Shield_Mirror_GetMessage
   ActorMsg/PouchContent:Weapon_Shield_Mirror_GetCaption
-Row 54: Spirit Medallion — 4 messages; selected path mapped
+Row 54: Spirit Medallion: 4 messages; selected path mapped
   Dm_Awake_Spirit_Get::EntryPoint0
   ActorMsg/PouchContent:Item_Medal_Spirit_GetMessage
   ActorMsg/PouchContent:Item_Medal_Spirit_GetCaption
   EventFlowMsg/Dm_Awake_Spirit_Get:Dm_Awake_Spirit_Get_Text_000_b
   EventFlowMsg/Dm_Awake_Spirit_Get:Dm_Awake_Spirit_Get_Text_001_b
-Row 55: Minuet warp after Twinrova — 2 messages; selected path mapped
+Row 55: Minuet warp after Twinrova: 2 messages; selected path mapped
   Dm_SY_Ocarina::PlayOcarinaSequence
   Successful warp; choose Yes.
   EventFlowMsg/Dm_SY_Ocarina:Talk_00
   EventFlowMsg/Dm_SY_Ocarina:Talk_02
-Row 56: Light Arrow acquisition — 2 messages; selected path mapped
+Row 56: Light Arrow acquisition: 2 messages; selected path mapped
   Dm_TimeTemple_0130::EntryPoint0
   ActorMsg/PouchContent:Item_Arrow_Light_GetMessage
   ActorMsg/PouchContent:Item_Arrow_Light_GetCaption
-Row 57: Ganon Castle bridge — 0 messages; selected path mapped
+Row 57: Ganon Castle bridge: 0 messages; selected path mapped
   Dm_GanonCastle_0000::EntryPoint0
-Row 58: Forest Trial barrier — 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
+Row 58: Forest Trial barrier: 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
   Dm_InsideGanonCastle_0005::EntryPoint_Forest
   EventFlowMsg/Dm_InsideGanonCastle_0005:Dm_InsideGanonCastle_0005_0000
-Row 59: Water Trial barrier — 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
+Row 59: Water Trial barrier: 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
   Dm_InsideGanonCastle_0005::EntryPoint_Water
   EventFlowMsg/Dm_InsideGanonCastle_0005:Dm_InsideGanonCastle_0005_0000
-Row 59: Bombchu chest — 2 messages; selected path mapped
+Row 59: Bombchu chest: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   InsideGanonCastle_Dynamic.bcett: room 5 chest Drop__DropActor=Item_BombchuBundle_Small (five Bombchus).
   ActorMsg/PouchContent:Item_BombchuBundle_Small_GetMessage
   ActorMsg/PouchContent:Item_BombchuBundle_Small_GetCaption
-Row 60: Shadow Trial barrier — 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
+Row 60: Shadow Trial barrier: 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
   Dm_InsideGanonCastle_0005::EntryPoint_Shadow
   EventFlowMsg/Dm_InsideGanonCastle_0005:Dm_InsideGanonCastle_0005_0000
-Row 60: Golden Gauntlets — 2 messages; selected path mapped
+Row 60: Golden Gauntlets: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   Chest reward named in sheet; item text substituted into GetPouchContent templates.
   ActorMsg/PouchContent:Armor_Adult_Gauntlet_Gold_GetMessage
   ActorMsg/PouchContent:Armor_Adult_Gauntlet_Gold_GetCaption
-Row 61: Fire Trial barrier — 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
+Row 61: Fire Trial barrier: 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
   Dm_InsideGanonCastle_0005::EntryPoint_Fire
   EventFlowMsg/Dm_InsideGanonCastle_0005:Dm_InsideGanonCastle_0005_0000
-Row 62: Light Trial barrier — 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
+Row 62: Light Trial barrier: 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
   Dm_InsideGanonCastle_0005::EntryPoint_Shine
   EventFlowMsg/Dm_InsideGanonCastle_0005:Dm_InsideGanonCastle_0005_0000
-Row 63: Spirit Trial barrier — 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
+Row 63: Spirit Trial barrier: 1 messages; REVIEW: Barrier inspection is a separate trigger, not proven to occur when simply clearing this trial. Excluded until confirmed.
   Dm_InsideGanonCastle_0005::EntryPoint_Spirit
   EventFlowMsg/Dm_InsideGanonCastle_0005:Dm_InsideGanonCastle_0005_0000
-Row 63: All six barriers cleared — 2 messages; selected path mapped
+Row 63: All six barriers cleared: 2 messages; selected path mapped
   Dm_InsideGanonCastle_0090::EntryPoint0
   Interactive Rauru messages after clearing the final barrier; voiced portions omitted.
   EventFlowMsg/Dm_InsideGanonCastle_0090:Dm_InsideGanonCastle_0090_Text_000_c
   EventFlowMsg/Dm_InsideGanonCastle_0090:Dm_InsideGanonCastle_0090_Text_001_b
-Row 66: Ganon Castle Boss Key — 2 messages; selected path mapped
+Row 66: Ganon Castle Boss Key: 2 messages; selected path mapped
   GetPouchContent::OpenGetWindow
   Chest reward named in sheet; item text substituted into GetPouchContent templates.
   ActorMsg/PouchContent:Item_Dungeon_BossKey_GetMessage
   ActorMsg/PouchContent:Item_Dungeon_BossKey_GetCaption
-Row 68: Collapse ending dialogue — 0 messages; REVIEW: Path remains incomplete; see mapping report.
+Row 68: Collapse ending dialogue: 0 messages; REVIEW: Path remains incomplete; see mapping report.
   Dm_InsideGanonCastle_0190::EntryPoint0
