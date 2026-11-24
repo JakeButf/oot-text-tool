@@ -72,9 +72,14 @@ test('single-case queries require a choice and allow an unmatched result',()=>{
   assert.equal(expandSequence(f,cat,'F::Main',{'F::Main/check':'otherwise'}).complete,true);
 });
 
-test('sheet route round-trips its caveats and compares every language',()=>{
+test('sheet route has no notes, includes one Forest inspection, and compares every language',()=>{
   const r=normalize(JSON.parse(readFileSync(new URL('../routes/anypercent-1-0.json',import.meta.url))));
-  assert.match(r.description,/1\.1\.1/);
+  assert.equal(r.description,undefined);
+  assert(r.entries.every(e=>e.notes===''));
+  const inspections=r.entries.filter(e=>e.sequence.id.startsWith('Dm_InsideGanonCastle_0005::'));
+  assert.equal(inspections.length,1);
+  assert.equal(inspections[0].sequence.id,'Dm_InsideGanonCastle_0005::EntryPoint_Forest');
+  assert.equal(inspections[0].include,true);
   assert.deepEqual(normalize(JSON.parse(JSON.stringify(r))),r);
   assert(!r.entries.some(e=>e.id.startsWith('EventFlowMsg/Dm_SY_Get:')));
   assert(r.entries.some(e=>e.sequence.title.includes('Chest-game start')));
