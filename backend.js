@@ -1,5 +1,6 @@
 // Static data access. Requests stay on this site's origin; route files stay local.
 import {expandSequence, searchSequences} from './sequences.js';
+import {summarizeTiming} from './timing.js';
 const pending=new Map();
 async function compressed(name){
   if(!pending.has(name))pending.set(name,(async()=>{
@@ -57,7 +58,7 @@ export function normalize(route){
   return {version:1,name,entries,measurements,...(description?{description}:{})};
 }
 
-export function compareCatalog(c,english,route){
+export function compareCatalog(c,english,route,timing){
   route=normalize(route);
   const positions=c.positions??new Map(c.ids.map((id,i)=>[id,i]));
   const active=route.entries.filter(e=>e.include);
@@ -73,7 +74,8 @@ export function compareCatalog(c,english,route){
       if(measured===undefined)unmeasured++;else seconds+=measured*e.count;
     }
     const complete=active.length>0&&missing.length===0;
-    return {locale,name,boxes:complete?boxes:null,chars:complete?chars:null,missing,warnings:[...warnings].sort(),
+    const audit=summarizeTiming(active.map(e=>[timing?.metrics[locale]?.[positions.get(e.id)],e.count]));
+    return {locale,name,boxes:complete?boxes:null,chars:complete?chars:null,missing,warnings:[...warnings].sort(),timing:audit,
             measured_seconds:complete&&!unmeasured?seconds:null,unmeasured};
   });
   const values=[...new Set(scores.map(s=>s.boxes).filter(v=>v!==null))].sort((a,b)=>a-b);
@@ -106,7 +108,10 @@ export async function api(path,body){
   if(url.pathname==='/api/save')return saveFile(body.filename,body.route);
   const c=await catalog();
   if(url.pathname==='/api/meta')return c.meta;
-  if(url.pathname==='/api/compare')return compareCatalog(c,await compressed('text-USen.json.gz'),body);
+  if(url.pathname==='/api/compare'){
+    const [english,timing]=await Promise.all([compressed('text-USen.json.gz'),compressed('timing.json.gz')]);
+    return compareCatalog(c,english,body,timing);
+  }
   if(url.pathname==='/api/search'){
     const locale=url.searchParams.get('locale')||'USen';
     if(!Object.hasOwn(c.meta.languages,locale))throw Error('Unknown language.');

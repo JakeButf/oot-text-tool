@@ -1,5 +1,6 @@
-import {createShareURL,readSharedRoute} from './share.js';
 import {api} from './backend.js';
+import {inspectTiming} from './timing.js';
+import {createShareURL,readSharedRoute} from './share.js';
 const $=id=>document.getElementById(id);
 let meta, route={version:1,name:'Untitled route',entries:[],measurements:{}}, result, dirty=false, searchSeq=0, compareSeq=0;
 const text=(tag,value,cls)=>{const n=document.createElement(tag);n.textContent=value;if(cls)n.className=cls;return n};
@@ -29,9 +30,25 @@ function renderScores(){if(!result)return;const timed=$('sort').value==='time',k
  winner.textContent=!result.included?'No messages selected.':!valid.length?(timed?'Measurements incomplete.':'Unresolved messages.'):
   'Minimum: '+(timed?best.toFixed(3)+' s':boxLabel(best))+' ('+winners.length+' language'+(winners.length===1?'':'s')+')';
  $('rankNote').textContent=timed?'Requires measurements for every included message.':'Box count does not measure elapsed time.';
+ renderTimingAudit(scores);
+}
+function renderTimingAudit(scores){
+ const body=$('timingRows');body.replaceChildren();
+ for(const score of scores){const a=score.timing,tr=document.createElement('tr');
+  tr.append(text('td',score.name),text('td',a&&!a.missing?a.fixed_tags.toLocaleString():'?'),text('td',a&&!a.missing?(a.fixed_units+a.explicit_wait_units).toLocaleString():'?'),text('td',a&&!a.missing?a.skip_guard_tags.toLocaleString():'?'));body.append(tr);
+ }
+}
+function timingDetails(tokens){
+ const a=inspectTiming(tokens),block=text('details','','timing-details');block.append(text('summary','Text timing'));
+ block.append(text('p',a.fixed_tags+' fixed delay tags, '+a.fixed_units+' authored timer units. '+a.explicit_wait_tags+' parameterized waits ('+a.explicit_wait_units+' units).'));
+ block.append(text('p',a.skip_guard_tags?a.skip_guard_tags+' skip-blocking controls (1:3). Their secondary timers total '+a.secondary_timer_units+' units; timers may overlap reveal, so this is not elapsed time.':'No embedded 1:3 skip guard. The event can still disable fast text.'));
+ block.append(text('p',a.speed_tags+' speed controls; '+a.instant_tags+' instant-reveal controls. Instant reveal alone does not bypass waits.'));
+ if(a.unknown_controls)block.append(text('p',a.unknown_controls+' unresolved timing controls.','flags'));
+ block.append(text('p','Fast-input elapsed time: unresolved. Mode 2 bypasses fixed and parameterized waits, but transitions, input gates and event waits are not yet timed.','hint'));
+ return block;
 }
 async function inspect(id){const d=await api('/api/message?id='+encodeURIComponent(id));$('detailTitle').textContent=id;const body=$('detailBody');body.replaceChildren();const refs=text('div','','refs');refs.append(text('strong','Event references'));if(!d.references.length)refs.append(text('p','No direct event reference found.'));for(const r of d.references.slice(0,40)){refs.append(text('div',r.flow+' → '+r.event+' · '+r.action+' ['+r.kind+']'));}body.append(refs);
- const grid=text('div','','language-grid');for(const [lang,name] of Object.entries(meta.languages)){const card=text('section','','language-card');const m=d.languages[lang];card.append(text('h3',name+' · '+(m?boxLabel(m.boxes):'missing')));if(m){m.pages.forEach((p,i)=>{const page=text('div','','page');page.append(text('span','PAGE '+(i+1),'page-label'),document.createTextNode(p||'[No literal text; inspect controls]'));card.append(page)});if(m.flags.length)card.append(text('p',m.flags.join(' · '),'flags'));const control=document.createElement('details');control.append(text('summary','Raw data'));control.append(text('pre',JSON.stringify({tags:m.tokens.filter(t=>t.kind!=='text'),attributes:m.attributes,member:m.member,sha256:m.sha256},null,2)));card.append(control);}
+ const grid=text('div','','language-grid');for(const [lang,name] of Object.entries(meta.languages)){const card=text('section','','language-card');const m=d.languages[lang];card.append(text('h3',name+' · '+(m?boxLabel(m.boxes):'missing')));if(m){m.pages.forEach((p,i)=>{const page=text('div','','page');page.append(text('span','PAGE '+(i+1),'page-label'),document.createTextNode(p||'[No literal text; inspect controls]'));card.append(page)});if(m.flags.length)card.append(text('p',m.flags.join(' · '),'flags'));card.append(timingDetails(m.tokens));const control=document.createElement('details');control.append(text('summary','Raw data'));control.append(text('pre',JSON.stringify({tags:m.tokens.filter(t=>t.kind!=='text'),attributes:m.attributes,member:m.member,sha256:m.sha256},null,2)));card.append(control);}
  const measurement=text('label','','measurement');measurement.append(text('span','Measured seconds'));const input=document.createElement('input');input.type='number';input.min=0;input.step='0.001';input.placeholder='Unknown';input.value=route.measurements[id]?.[lang]??'';input.onchange=async()=>{if(!route.measurements[id])route.measurements[id]={};if(input.value==='')delete route.measurements[id][lang];else{const v=Number(input.value);if(!Number.isFinite(v)||v<0||v>86400){status('Invalid measurement.',true);return}route.measurements[id][lang]=v;}edited();await refresh();status('Measurement updated; save the route to keep it.')};measurement.append(input);card.append(measurement);grid.append(card);}body.append(grid);if(!$('detail').open)$('detail').showModal();}
 async function routes(){const names=await api('/api/routes');$('saved').replaceChildren(new Option('Saved routes…',''));for(const n of names)$('saved').append(new Option(n,n));}
 async function acceptReplacement(){if(!dirty)return true;return new Promise(resolve=>{const dlg=$('replaceDialog');dlg.returnValue='';dlg.onclose=()=>resolve(dlg.returnValue==='replace');$('replaceCancel').onclick=()=>dlg.close('cancel');$('replaceConfirm').onclick=()=>dlg.close('replace');dlg.showModal()});}

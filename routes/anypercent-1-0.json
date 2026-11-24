@@ -135,6 +135,48 @@
       }
     },
     {
+      "id": "EventFlowMsg/Npc_Kokiri_011_Child:Talk_02",
+      "count": 1,
+      "include": true,
+      "notes": "",
+      "sequence": {
+        "id": "Npc_Kokiri_011_Child::KokiriForest_Kokiri_011_StopInFrontOfShop_00",
+        "title": "05. Shop ledge girl: forced greeting",
+        "instance": "shop-ledge-forced",
+        "choices": {
+          "Npc_Kokiri_011_Child::KokiriForest_Kokiri_011_StopInFrontOfShop_00/Event80": "1"
+        }
+      }
+    },
+    {
+      "id": "EventFlowMsg/Npc_Kokiri_011_Child:Talk_08",
+      "count": 1,
+      "include": true,
+      "notes": "",
+      "sequence": {
+        "id": "Npc_Kokiri_011_Child::KokiriForest_Kokiri_011_StopInFrontOfShop_00",
+        "title": "05. Shop ledge girl: forced greeting",
+        "instance": "shop-ledge-forced",
+        "choices": {
+          "Npc_Kokiri_011_Child::KokiriForest_Kokiri_011_StopInFrontOfShop_00/Event80": "1"
+        }
+      }
+    },
+    {
+      "id": "EventFlowMsg/Npc_Kokiri_011_Child:Talk_07",
+      "count": 1,
+      "include": true,
+      "notes": "",
+      "sequence": {
+        "id": "Npc_Kokiri_011_Child::KokiriForest_Kokiri_011_StopInFrontOfShop_00",
+        "title": "05. Shop ledge girl: forced greeting",
+        "instance": "shop-ledge-forced",
+        "choices": {
+          "Npc_Kokiri_011_Child::KokiriForest_Kokiri_011_StopInFrontOfShop_00/Event80": "1"
+        }
+      }
+    },
+    {
       "id": "EventFlowMsg/Npc_Kokiri_001_Shop_Child:Talk_0004",
       "count": 1,
       "include": true,
