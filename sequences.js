@@ -51,9 +51,10 @@ export function expandSequence(flows,catalog,id,choices={}){
     return walk(flow,ep.start,{...local,...env},path,stack,null,lane);
   }
   function choose(e,env,path,known=null){
-    const cases=e.cases??{};
-    if(known!==null&&Object.hasOwn(cases,String(known)))return cases[String(known)];
-    if(new Set(Object.values(cases)).size===1)return Object.values(cases)[0];
+    const cases={...e.cases};
+    if(known!==null)return cases[String(known)]??null;
+    if(Object.keys(cases).length===1)cases.otherwise=null;
+    if(e.type!=='SubFlowSwitchEvent'&&new Set(Object.values(cases)).size===1)return Object.values(cases)[0];
     const value=choices[path];if(typeof value==='string'&&Object.hasOwn(cases,value))return cases[value];
     branches.push({key:path,query:e.query??e.entry_point??e.type,params:Object.fromEntries(Object.entries(e.params??{}).map(([k,v])=>[k,resolve(v,env)])),cases});return null;
   }

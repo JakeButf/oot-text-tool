@@ -52,7 +52,9 @@ export function normalize(route){
   }
   const name=route.name??'Untitled route';
   if(typeof name!=='string'||name.length>100)throw Error('Invalid route name.');
-  return {version:1,name,entries,measurements};
+  const description=route.description??'';
+  if(typeof description!=='string'||description.length>10000)throw Error('Invalid route description.');
+  return {version:1,name,entries,measurements,...(description?{description}:{})};
 }
 
 export function compareCatalog(c,english,route){
@@ -94,6 +96,13 @@ async function saveFile(filename,route){
 export async function api(path,body){
   const url=new URL(path,'https://local.invalid');
   if(url.pathname==='/api/routes')return [];
+  if(url.pathname==='/api/route'){
+    const name=url.searchParams.get('name')??'';
+    if(!/^[A-Za-z0-9_-]{1,80}$/.test(name))throw Error('Invalid route name.');
+    const response=await fetch(new URL('./routes/'+name+'.json',import.meta.url));
+    if(!response.ok)throw Error('Could not load route ('+response.status+').');
+    return normalize(await response.json());
+  }
   if(url.pathname==='/api/save')return saveFile(body.filename,body.route);
   const c=await catalog();
   if(url.pathname==='/api/meta')return c.meta;

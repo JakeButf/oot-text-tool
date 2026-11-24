@@ -51,6 +51,40 @@ test('route JSON preserves sequence groups and rejects invalid counts',()=>{
   assert.deepEqual(saved.entries[0].sequence,sequence);
   assert.throws(()=>normalize({entries:[{id:'Text:A',count:-1}]}));
 });
+
+test('unmatched subflow returns do not enter a lone success branch',()=>{
+  const f={F:{entry_points:[{name:'Main',start:'call'},{name:'Check',start:'ret'}],events:[
+    {name:'call',type:'SubFlowSwitchEvent',flowchart:'F',entry_point:'Check',cases:{'1':'talk'}},
+    {name:'ret',type:'ReturnEvent',value:0},
+    {name:'talk',type:'ActionEvent',action:'EventTalk',params:{MessageId:'X:Wrong'},next:null}
+  ]}};
+  const r=expandSequence(f,[{id:'F::Main',flow:'F',entry:'Main',title:'Test'}],'F::Main');
+  assert.equal(r.complete,true);assert.deepEqual(r.messages,[]);
+});
+
+test('single-case queries require a choice and allow an unmatched result',()=>{
+  const f={F:{entry_points:[{name:'Main',start:'check'}],events:[
+    {name:'check',type:'SwitchEvent',query:'EventQueryIsGameDataBool',cases:{'0':'talk'}},
+    {name:'talk',type:'ActionEvent',action:'EventTalk',params:{MessageId:'X:A'},next:null}
+  ]}};
+  const cat=[{id:'F::Main',flow:'F',entry:'Main',title:'Test'}];
+  const r=expandSequence(f,cat,'F::Main');assert.equal(r.complete,false);assert.equal(r.messages.length,0);
+  assert.equal(expandSequence(f,cat,'F::Main',{'F::Main/check':'otherwise'}).complete,true);
+});
+
+test('sheet route round-trips its caveats and compares every language',()=>{
+  const r=normalize(JSON.parse(readFileSync(new URL('../routes/anypercent-1-0.json',import.meta.url))));
+  assert.match(r.description,/1\.1\.1/);
+  assert.deepEqual(normalize(JSON.parse(JSON.stringify(r))),r);
+  assert(!r.entries.some(e=>e.id.startsWith('EventFlowMsg/Dm_SY_Get:')));
+  assert(r.entries.some(e=>e.sequence.title.includes('Chest-game start')));
+  assert(r.entries.some(e=>e.sequence.title.includes('Potion-shop bottle')));
+  const results=compareCatalog(catalog,english,r);
+  assert.equal(results.scores.length,16);
+  assert(results.scores.every(s=>s.boxes!==null&&s.measured_seconds===null));
+  assert(r.entries.filter(e=>e.sequence.title.includes('Review:')).every(e=>!e.include));
+  assert.throws(()=>normalize({...r,description:{}}));
+});
 test('unselected switches never combine alternative dialogue',()=>{
   const f={F:{entry_points:[{name:'Main',start:'switch'}],events:[
     {name:'switch',type:'SwitchEvent',query:'Flag',cases:{0:'a',1:'b'}},
